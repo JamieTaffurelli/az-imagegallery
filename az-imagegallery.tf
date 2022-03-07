@@ -1,35 +1,25 @@
-terraform {
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "~> 2.95"
-    }
-  }
-
-  required_version = "~> 1.1.5"
-}
-
 resource "azurerm_shared_image_gallery" "images" {
   name                = var.image_gallery_name
-  resource_group_name = azurerm_resource_group.images.name
-  location            = azurerm_resource_group.images.location
+  resource_group_name = var.resource_group_name
+  location            = var.location
   description         = var.image_gallery_description
   tags                = var.tags
 }
 
 resource "azurerm_shared_image" "images" {
-  name                = var.image_name
+  for_each            = var.images
+  name                = each.value.name
   gallery_name        = azurerm_shared_image_gallery.images.name
-  resource_group_name = azurerm_resource_group.images.name
-  location            = azurerm_resource_group.images.location
-  os_type             = var.os_type
-  description         = var.image_description
+  resource_group_name = var.resource_group_name
+  location            = var.location
+  os_type             = each.value.os_type
+  description         = each.value.description
   specialized         = false
 
   identifier {
-    publisher = var.image_publisher
-    offer     = var.image_offer
-    sku       = var.image_sku
+    publisher = each.value.publisher
+    offer     = each.value.offer
+    sku       = each.value.sku
   }
   tags = var.tags
 }

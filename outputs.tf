@@ -8,6 +8,11 @@ output "shared_image_gallery_unique_name" {
   description = "The unique name of the Shared Image Gallery"
 }
 
+output "images" {
+  value       = azurerm_shared_image.images
+  description = "The images deployed to the Shared Image Gallery"
+}
+
 output "user_assigned_identity_id" {
   value       = azurerm_user_assigned_identity.images.id
   description = "The resource ID of the User Assigned Identity"
