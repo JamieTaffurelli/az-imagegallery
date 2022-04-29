@@ -18,9 +18,10 @@ func showTerraformPlanAsJSON(t *testing.T) *gojq.JQ {
 			"location":            "francecentral",
 			"image_gallery_name": "imggal",
 			"image_gallery_description": "Image Gallery Description",
-			"images": [
+			"images":  []string[
 				{
-					name = "windows" os_type     = "Windows"
+					name = "windows" 
+					os_type     = "Windows"
 					description = "Windows description"
 					publisher   = "Windows"
 					offer       = "2016-datacenter"
