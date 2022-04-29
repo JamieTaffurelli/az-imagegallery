@@ -24,11 +24,11 @@ output "user_assigned_identity_principal_id" {
 }
 
 output "user_assigned_identity_client_id" {
-  value       = azurerm_shared_image_gallery.images.client_id
+  value       = azurerm_user_assigned_identity.images.client_id
   description = "Client ID of the User Assigned Identity"
 }
 
 output "user_assigned_identity_tenant_id" {
-  value       = azurerm_shared_image_gallery.images.tenant_id
+  value       = azurerm_user_assigned_identity.images.tenant_id
   description = "Tenant ID of the User Assigned Identity"
 }
