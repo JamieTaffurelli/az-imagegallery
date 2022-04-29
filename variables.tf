@@ -12,6 +12,11 @@ variable "image_gallery_name" {
   description = "Name of Shared Image Gallery"
 }
 
+variable "image_gallery_description" {
+  type        = string
+  description = "Description of Shared Image Gallery"
+}
+
 variable "images" {
   type = map(object(
     {
