@@ -30,7 +30,7 @@ variable "images" {
         for image in var.images : contains(["Linux", "Windows"], image.os_type)
       ]
     )
-    error_message = "os_type must be Windows or Linux"
+    error_message = "OS type must be Windows or Linux."
   }
   description = "Images to deploy to Shared Image Gallery"
 }
