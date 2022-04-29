@@ -18,16 +18,14 @@ variable "image_gallery_description" {
 }
 
 variable "images" {
-  type = list(object(
-    {
-      name        = string
-      os_type     = string
-      description = string
-      publisher   = string
-      offer       = string
-      sku         = string
-    }
-  ))
+  type = map(object({
+    name        = string
+    os_type     = string
+    description = string
+    publisher   = string
+    offer       = string
+    sku         = string
+  }))
 
   validation {
     condition = alltrue(

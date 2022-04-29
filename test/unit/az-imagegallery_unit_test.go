@@ -14,21 +14,31 @@ func showTerraformPlanAsJSON(t *testing.T) *gojq.JQ {
 	tfOptions := &terraform.Options{
 		TerraformDir: "../../",
 		Vars: map[string]interface{}{
-			"resource_group_name": "testrg",
-			"location":            "francecentral",
-			"image_gallery_name": "imggal",
+			"resource_group_name":       "testrg",
+			"location":                  "francecentral",
+			"image_gallery_name":        "imggal",
 			"image_gallery_description": "Image Gallery Description",
-			"images":  []string[
+			/*"images": []image{
 				{
-					name = "windows" 
-					os_type     = "Windows"
-					description = "Windows description"
-					publisher   = "Windows"
-					offer       = "2016-datacenter"
-					sku         = "WindowsServer"
-				}
-			]
-			"tags":                map[string]string{},
+					name:        "windows",
+					os_type:     "Windows",
+					description: "Windows description",
+					publisher:   "Windows",
+					offer:       "2016-datacenter",
+					sku:         "WindowsServer",
+				},
+			},*/
+			"images": map[string]interface{}{
+				"image": map[string]interface{}{
+					"name":        "windows",
+					"os_type":     "Windows",
+					"description": "Windows description",
+					"publisher":   "Windows",
+					"offer":       "2016-datacenter",
+					"sku":         "WindowsServer",
+				},
+			},
+			"tags": map[string]string{},
 		},
 		NoColor: true,
 	}
