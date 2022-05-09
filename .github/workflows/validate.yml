@@ -47,6 +47,10 @@ jobs:
         version: latest
         working-directory: test/unit/
 
-    - name: Terratest
+    - name: Unit Tests
       working-directory: test/unit/
+      run: go test -v
+
+    - name: Integration Tests
+      working-directory: test/integration/
       run: go test -v
