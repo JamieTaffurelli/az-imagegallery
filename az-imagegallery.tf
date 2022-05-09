@@ -25,8 +25,8 @@ resource "azurerm_shared_image" "images" {
 }
 
 resource "azurerm_user_assigned_identity" "images" {
-  name                = var.identity_name
-  resource_group_name = azurerm_resource_group.images.name
-  location            = azurerm_resource_group.images.location
+  name                = var.image_gallery_name
+  resource_group_name = var.resource_group_name
+  location            = var.location
   tags                = var.tags
 }

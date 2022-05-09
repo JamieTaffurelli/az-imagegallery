@@ -12,17 +12,20 @@ variable "image_gallery_name" {
   description = "Name of Shared Image Gallery"
 }
 
+variable "image_gallery_description" {
+  type        = string
+  description = "Description of Shared Image Gallery"
+}
+
 variable "images" {
-  type = map(object(
-    {
-      name        = string
-      os_type     = string
-      description = string
-      publisher   = string
-      offer       = string
-      sku         = string
-    }
-  ))
+  type = map(object({
+    name        = string
+    os_type     = string
+    description = string
+    publisher   = string
+    offer       = string
+    sku         = string
+  }))
 
   validation {
     condition = alltrue(
@@ -30,7 +33,7 @@ variable "images" {
         for image in var.images : contains(["Linux", "Windows"], image.os_type)
       ]
     )
-    error_message = "os_type must be Windows or Linux"
+    error_message = "OS type must be Windows or Linux."
   }
   description = "Images to deploy to Shared Image Gallery"
 }

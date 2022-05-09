@@ -1,0 +1,31 @@
+on: 
+  push:
+    branches:
+      - main
+
+concurrency: ci-${{ github.ref }}
+
+env:
+  ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+  ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+  ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+  ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+jobs:
+  validate:
+    environment: deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    
+    - name: Version Modules
+      uses: paulhatch/semantic-version@v4
+      with:
+        tag_prefix: v
+        major_pattern: (MAJOR)
+        minor_pattern: (MINOR)
+        format: ${major}.${minor}.${patch}
+        bump_each_commit: false
+        change_path: az-resourcegroup.tf outputs.tf providers.tf variables.tf
