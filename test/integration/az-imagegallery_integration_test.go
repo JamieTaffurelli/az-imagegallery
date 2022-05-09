@@ -38,7 +38,7 @@ func TestIT_OutputsAreCorrect(t *testing.T) {
 
 	terraform.InitAndApply(t, tfOptions)
 
-	assert.Equal(t, strings.Contains(terraform.Output(t, tfOptions, "shared_image_gallery_id"), "/resourceGroups/testrg/Microsoft.Compute/sharedImageGalleries/testimggal"), true, "Shared Image Gallery Resource ID should be correct")
-	assert.Equal(t, strings.Contains(terraform.Output(t, tfOptions, "shared_image_gallery_unique_name"), "-TESTIMGGAL"), true, "Shared Image Gallery unique name should be correct")
-	assert.Equal(t, strings.Contains(terraform.Output(t, tfOptions, "user_assigned_identity_id"), "/resourceGroups/testrg/Microsoft.ManagedIdentity/userAssignedIdentities/testimggal"), true, "User Assigned Identity Resource ID should be correct")
+	assert.Equal(t, true, strings.Contains(terraform.Output(t, tfOptions, "shared_image_gallery_id"), "/resourceGroups/testrg/Microsoft.Compute/galleries/testimggal"), "Shared Image Gallery Resource ID should be correct")
+	assert.Equal(t, true, strings.Contains(terraform.Output(t, tfOptions, "shared_image_gallery_unique_name"), "-TESTIMGGAL"), "Shared Image Gallery unique name should be correct")
+	assert.Equal(t, true, strings.Contains(terraform.Output(t, tfOptions, "user_assigned_identity_id"), "/resourceGroups/testrg/Microsoft.ManagedIdentity/userAssignedIdentities/testimggal"), "User Assigned Identity Resource ID should be correct")
 }
