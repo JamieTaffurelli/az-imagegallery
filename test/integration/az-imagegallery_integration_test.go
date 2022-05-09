@@ -6,8 +6,6 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/elgs/gojq"
-
 	"github.com/gruntwork-io/terratest/modules/terraform"
 )
 
