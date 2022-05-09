@@ -1,6 +1,7 @@
 package test
 
 import (
+	"os"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -37,7 +38,7 @@ func TestIT_OutputsAreCorrect(t *testing.T) {
 
 	terraform.InitAndApply(t, tfOptions)
 
-	assert.Equal(t, terraform.Output(t, tfOptions, "shared_image_gallery_id"), "/subscriptions//resourceGroups/testrg/Microsoft.Compute/sharedImageGalleries/testimggal", "Shared Image Gallery Resource ID should be correct")
-	assert.Equal(t, terraform.Output(t, tfOptions, "shared_image_gallery_unique_name"), "TESTIMGGAL", "Shared Image Gallery unique name should be correct")
-	assert.Equal(t, terraform.Output(t, tfOptions, "user_assigned_identity_id"), "/subscriptions//resourceGroups/testrg/Microsoft.ManagedIdentity/userAssignedIdentities/testimggal", "User Assigned Identity Resource ID should be correct")
+	assert.Equal(t, terraform.Output(t, tfOptions, "shared_image_gallery_id"), "/subscriptions/"+os.Getenv("AZURE_SUBSCRIPTION_ID")+"/resourceGroups/testrg/Microsoft.Compute/sharedImageGalleries/testimggal", "Shared Image Gallery Resource ID should be correct")
+	assert.Equal(t, terraform.Output(t, tfOptions, "shared_image_gallery_unique_name"), os.Getenv("AZURE_SUBSCRIPTION_ID")"-TESTIMGGAL", "Shared Image Gallery unique name should be correct")
+	assert.Equal(t, terraform.Output(t, tfOptions, "user_assigned_identity_id"), "/subscriptions/"+os.Getenv("AZURE_SUBSCRIPTION_ID")+"/resourceGroups/testrg/Microsoft.ManagedIdentity/userAssignedIdentities/testimggal", "User Assigned Identity Resource ID should be correct")
 }
