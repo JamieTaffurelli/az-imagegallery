@@ -17,7 +17,7 @@ func TestIT_OutputsAreCorrect(t *testing.T) {
 		Vars: map[string]interface{}{
 			"resource_group_name":       "testrg",
 			"location":                  "francecentral",
-			"image_gallery_name":        "imggal",
+			"image_gallery_name":        "testimggal",
 			"image_gallery_description": "Image Gallery Description",
 			"images": map[string]interface{}{
 				"image": map[string]interface{}{
@@ -38,7 +38,7 @@ func TestIT_OutputsAreCorrect(t *testing.T) {
 
 	terraform.InitAndApply(t, tfOptions)
 
-	assert.Equal(t, terraform.Output(t, tfOptions, "shared_image_gallery_id"), "/subscriptions/"+os.Getenv("AZURE_SUBSCRIPTION_ID")+"/resourceGroups/testrg/Microsoft.Compute/sharedImageGalleries/imggal", "Shared Image Gallery Resource ID should be correct")
+	assert.Equal(t, terraform.Output(t, tfOptions, "shared_image_gallery_id"), "/subscriptions/"+os.Getenv("AZURE_SUBSCRIPTION_ID")+"/resourceGroups/testrg/Microsoft.Compute/sharedImageGalleries/testimggal", "Shared Image Gallery Resource ID should be correct")
 	assert.Equal(t, terraform.Output(t, tfOptions, "shared_image_gallery_unique_name"), "imggal", "Shared Image Gallery unique name should be correct")
 	assert.Equal(t, terraform.Output(t, tfOptions, "shared_image_gallery_unique_name"), "/subscriptions/"+os.Getenv("AZURE_SUBSCRIPTION_ID")+"/resourceGroups/testrg/Microsoft.ManagedIdentity/userAssignedIdentities/imggal", "Shared Image Gallery unique name should be correct")
 }
