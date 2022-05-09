@@ -47,6 +47,20 @@ jobs:
         version: latest
         working-directory: test/unit/
 
-    - name: Terratest
+    - name: Unit Tests
       working-directory: test/unit/
+      run: go test -v
+
+    - name: Setup Go Integration Test Dependencies
+      working-directory: test/integration/
+      run:  go get -v -t -d && go mod tidy
+    
+    - name: Lint Integration Tests
+      uses: golangci/golangci-lint-action@v3
+      with:
+        version: latest
+        working-directory: test/integration/
+
+    - name: Integration Tests
+      working-directory: test/integration/
       run: go test -v
