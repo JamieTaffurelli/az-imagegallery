@@ -4,8 +4,8 @@ go 1.18
 
 require (
 	github.com/elgs/gojq v0.0.0-20201120033525-b5293fef2759
-	github.com/gruntwork-io/terratest v0.40.6
-	github.com/stretchr/testify v1.7.1
+	github.com/gruntwork-io/terratest v0.40.17
+	github.com/stretchr/testify v1.8.0
 )
 
 require (
