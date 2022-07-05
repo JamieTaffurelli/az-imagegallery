@@ -12,9 +12,13 @@ repos:
         args: [--markdown-linebreak-ext=md]
         exclude: CHANGELOG.md
       - id: check-yaml
+      - id: check-json
+      - id: pretty-format-json
+        args: [--autofix]
       - id: check-merge-conflict
       - id: check-case-conflict
       - id: mixed-line-ending
+      - id: detect-private-key
         args: [--fix=lf]
 
   - repo: https://github.com/gruntwork-io/pre-commit
