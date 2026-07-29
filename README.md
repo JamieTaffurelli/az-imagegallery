@@ -37,7 +37,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_image_gallery_description"></a> [image\_gallery\_description](#input\_image\_gallery\_description) | Description of Shared Image Gallery | `string` | n/a | yes |
 | <a name="input_image_gallery_name"></a> [image\_gallery\_name](#input\_image\_gallery\_name) | Name of Shared Image Gallery | `string` | n/a | yes |
-| <a name="input_images"></a> [images](#input\_images) | Images to deploy to Shared Image Gallery | <pre>map(object({<br>    name        = string<br>    os_type     = string<br>    description = string<br>    publisher   = string<br>    offer       = string<br>    sku         = string<br>  }))</pre> | n/a | yes |
+| <a name="input_images"></a> [images](#input\_images) | Images to deploy to Shared Image Gallery | <pre>map(object({<br/>    name        = string<br/>    os_type     = string<br/>    description = string<br/>    publisher   = string<br/>    offer       = string<br/>    sku         = string<br/>  }))</pre> | n/a | yes |
 | <a name="input_location"></a> [location](#input\_location) | Location to deploy resources | `string` | n/a | yes |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | Name of the Resource Group to deploy to | `string` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | Tags to apply to resources | `map(string)` | n/a | yes |
